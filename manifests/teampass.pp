@@ -42,6 +42,7 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
+
 class teampass {
   $teampass_docroot = '/var/www/teampass'
   $teampass_repository ='https://github.com/nilsteampassnet/TeamPass.git'
@@ -58,7 +59,7 @@ class teampass {
 
 
 
-  // Clone teampass repository to doc root
+  # Clone teampass repository to doc root
   vcsrepo { $teampass_docroot:
     ensure   => present,
     provider => git,
