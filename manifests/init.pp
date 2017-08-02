@@ -59,6 +59,7 @@ class teampass {
 
   package {
     [
+      'epel-release',
       'git',
       'php-mbstring',
       'php-mcrypt',
