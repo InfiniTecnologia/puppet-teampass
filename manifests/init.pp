@@ -62,8 +62,9 @@ class teampass {
 
   class { '::php::globals':
     php_version => '5.5',
-  } 
+  }-> 
   class { '::php':
+    manage_repos => true,
     settings   => {
       'PHP/max_execution_time'  => '90',
     },
@@ -93,7 +94,7 @@ class teampass {
     vhost          => $teampass_url,
     docroot        => $teampass_docroot,
     port           => $teampass_port,
-    fastcgi_socket => "fcgi://127.0.0.1:9000/${teampass_docroot}$1",
+    fastcgi_socket => "fcgi://127.0.0.1:9000${teampass_docroot}$1",
 
   }
 
