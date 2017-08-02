@@ -55,21 +55,7 @@ class teampass {
   include apache::mod::rewrite
   include apache::mod::ssl
   include apache::mod::vhost_alias
-  include apache::mod::headers
-
-  package {
-    [
-      'epel-release',
-      'git',
-      'php-mbstring',
-      'php-mcrypt',
-      'php-openssl',
-      'php-iconv',
-      'php-xml',
-      'php-gd',
-    ]:
-    ensure => 'present'
-  } 
+  include apache::mod::headers 
 
   class { '::php':
     settings   => {
@@ -77,7 +63,13 @@ class teampass {
     },
     extensions => {
       bcmath    => { },
-      msqli     => { }
+      msql      => { },
+      mbstring  => { },
+      mcrypt    => { },
+      openssl   => { },
+      iconv     => { },
+      xml       => { },
+      gd        => { },
     },
 
   }
@@ -89,10 +81,17 @@ class teampass {
     source   => $teampass_repository,
     revision => 'master',
   }
+ 
+  php::apache_vhost { teampass_url:
+    docroot       => $teampass_docroot
+    port          => $teampass_port
+    fastcgi_socke => 'fcgi://127.0.0.1:9000/$1'
 
-  apache::vhost { $teampass_url:
-    port    => $teampass_port,
-    docroot => $teampass_docroot,
   }
+
+#  apache::vhost { $teampass_url:
+#    port    => $teampass_port,
+#    docroot => $teampass_docroot,
+#  }
 
 }
