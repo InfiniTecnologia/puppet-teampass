@@ -82,7 +82,7 @@ class teampass {
     revision => 'master',
   }
  
-  php::apache_vhost { teampass_url:
+  php::apache_vhost { $teampass_url:
     docroot        => $teampass_docroot,
     port           => $teampass_port,
     fastcgi_socket => 'fcgi://127.0.0.1:9000/$1',
