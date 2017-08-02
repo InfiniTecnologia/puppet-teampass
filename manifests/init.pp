@@ -64,15 +64,23 @@ class teampass {
       'php-mbstring',
       'php-mcrypt',
       'php-openssl',
-      'php-bcmach',
       'php-iconv',
       'php-xml',
       'php-gd',
-      'php-msqli'
     ]:
     ensure => 'present'
   } 
 
+  class { '::php':
+    settings   => {
+      'PHP/max_execution_time'  => '90',
+    },
+    extensions => {
+      bcmath    => { },
+      msqli     => { }
+    },
+
+  }
 
   # Clone teampass repository to doc root
   vcsrepo { $teampass_docroot:
