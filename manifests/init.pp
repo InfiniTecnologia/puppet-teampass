@@ -57,6 +57,9 @@ class teampass {
   include apache::mod::vhost_alias
   include apache::mod::headers
 
+  package {'git':
+    ensure => 'present'
+  } 
 
 
   # Clone teampass repository to doc root
