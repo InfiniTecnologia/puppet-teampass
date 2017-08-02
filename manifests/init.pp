@@ -43,6 +43,32 @@
 # Copyright 2017 Your name here, unless otherwise noted.
 #
 class teampass {
+  $teampass_docroot = '/var/www/teampass'
+  $teampass_repository ='https://github.com/nilsteampassnet/TeamPass.git'
+  $teampass_port = '80'
+  $teampass_url = 'teampass.local'
 
+  include apache
+  include apache::mod::php
+  include apache::mod::alias
+  include apache::mod::rewrite
+  include apache::mod::ssl
+  include apache::mod::vhost_alias
+  include apache::mod::headers
+
+
+
+  // Clone teampass repository to doc root
+  vcsrepo { $teampass_docroot:
+    ensure   => present,
+    provider => git,
+    source   => teampass_repository,
+    revision => 'master',
+  }
+
+  apache::vhost { $teampass_url:
+    port    => $teampass_port,
+    docroot => $teampass_docroot,
+  }
 
 }
