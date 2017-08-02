@@ -60,6 +60,9 @@ class teampass {
   include apache::mod::proxy_http
   include apache::mod::proxy_fcgi
 
+  class { '::php::globals':
+    php_version => '5.5',
+  } 
   class { '::php':
     settings   => {
       'PHP/max_execution_time'  => '90',
