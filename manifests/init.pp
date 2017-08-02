@@ -45,7 +45,7 @@
 
 class teampass {
   $teampass_docroot = '/var/www/teampass'
-  $teampass_repository ='https://github.com/nilsteampassnet/TeamPass.git'
+  $teampass_repository = 'https://github.com/nilsteampassnet/TeamPass.git'
   $teampass_port = '80'
   $teampass_url = 'teampass.local'
 
@@ -66,7 +66,7 @@ class teampass {
   vcsrepo { $teampass_docroot:
     ensure   => present,
     provider => git,
-    source   => teampass_repository,
+    source   => $teampass_repository,
     revision => 'master',
   }
 
