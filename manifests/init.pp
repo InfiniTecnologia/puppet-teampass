@@ -50,7 +50,6 @@ class teampass {
   $teampass_url = 'teampass.local'
 
   include apache
-  include apache::mod::php
   include apache::mod::alias
   include apache::mod::rewrite
   include apache::mod::ssl
@@ -59,6 +58,7 @@ class teampass {
   include apache::mod::proxy
   include apache::mod::proxy_balancer
   include apache::mod::proxy_http
+  include apache::mod::proxy_fcgi
 
   class { '::php':
     settings   => {
