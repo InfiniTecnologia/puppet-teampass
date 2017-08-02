@@ -83,8 +83,9 @@ class teampass {
   }
 
   file{ $teampass_docroot:
-  	ensure => 'directory',
+  	ensure  => 'directory',
   	owner   => 'apache',
+  	group   => 'apache'
   }
 
   # Clone teampass repository to doc root
