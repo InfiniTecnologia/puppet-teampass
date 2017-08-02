@@ -57,7 +57,18 @@ class teampass {
   include apache::mod::vhost_alias
   include apache::mod::headers
 
-  package {'git':
+  package {
+    [
+      'git',
+      'php-mbstring',
+      'php-mcrypt',
+      'php-openssl',
+      'php-bcmach',
+      'php-iconv',
+      'php-xml',
+      'php-gd',
+      'php-msqli'
+    ]:
     ensure => 'present'
   } 
 
