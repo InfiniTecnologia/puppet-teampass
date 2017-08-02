@@ -83,9 +83,9 @@ class teampass {
   }
  
   php::apache_vhost { teampass_url:
-    docroot       => $teampass_docroot
-    port          => $teampass_port
-    fastcgi_socke => 'fcgi://127.0.0.1:9000/$1'
+    docroot       => $teampass_docroot,
+    port          => $teampass_port,
+    fastcgi_socke => 'fcgi://127.0.0.1:9000/$1',
 
   }
 
