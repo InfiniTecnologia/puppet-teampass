@@ -88,6 +88,7 @@ class teampass {
     provider => git,
     source   => $teampass_repository,
     revision => 'master',
+    user     => 'apache',
   }
  
   php::apache_vhost { $teampass_url:
