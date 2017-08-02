@@ -56,7 +56,9 @@ class teampass {
   include apache::mod::ssl
   include apache::mod::vhost_alias
   include apache::mod::headers 
-  include apache::mod::proxy 
+  include apache::mod::proxy
+  include apache::mod::proxy_balancer
+  include apache::mod::proxy_http
 
   class { '::php':
     settings   => {
@@ -64,7 +66,7 @@ class teampass {
     },
     extensions => {
       bcmath    => { },
-      msql      => { },
+      mysql      => { },
       mbstring  => { },
       mcrypt    => { },
       openssl   => { },
