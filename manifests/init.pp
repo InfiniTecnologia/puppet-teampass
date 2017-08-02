@@ -76,6 +76,7 @@ class teampass {
       iconv     => { },
       xml       => { },
       gd        => { },
+      pdo       => { },
     },
 
   }
@@ -92,7 +93,7 @@ class teampass {
     vhost          => $teampass_url,
     docroot        => $teampass_docroot,
     port           => $teampass_port,
-    fastcgi_socket => "fcgi://127.0.0.1:9000/${docroot}$1",
+    fastcgi_socket => "fcgi://127.0.0.1:9000/${teampass_docroot}$1",
 
   }
 
