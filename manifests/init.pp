@@ -83,7 +83,7 @@ class teampass {
     revision => 'master',
   }
  
-  php::apache_vhost { 
+  php::apache_vhost { $teampass_url
     vhost          => $teampass_url,
     docroot        => $teampass_docroot,
     port           => $teampass_port,
