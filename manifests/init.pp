@@ -82,6 +82,11 @@ class teampass {
 
   }
 
+  file{ $teampass_docroot:
+  	ensure => 'directory',
+  	user   => 'apache',
+  }
+
   # Clone teampass repository to doc root
   vcsrepo { $teampass_docroot:
     ensure   => present,
