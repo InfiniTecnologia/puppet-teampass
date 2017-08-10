@@ -60,9 +60,18 @@ class teampass {
   include apache::mod::proxy_http
   include apache::mod::proxy_fcgi
 
+  package {[
+    'git',
+    ]:
+    ensure => installed,
+  }
+
   class { '::php::globals':
     php_version => '5.5',
   }-> 
+
+
+
   class { '::php':
     manage_repos => true,
     settings   => {
